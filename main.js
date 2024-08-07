@@ -26,8 +26,8 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 export async function ambildaftarjadwal() {
-  const refDokumen = collection(db, "jadwal_pelajaran");
-  const kueri = query(refDokumen, orderBy("id"));
+  const refDokumen = collection(db, "jadwal");
+  const kueri = query(refDokumen, orderBy("hari"));
   const cuplikankueri = await getDocs(kueri);
 
   let hasil = [];
@@ -38,7 +38,7 @@ export async function ambildaftarjadwal() {
       jam: dok.data().jam,
       waktu: dok.data().waktu,
       kelas: dok.data().kelas,
-      mapel: dok.data().mapel,
+      mapel: dok.data().mapel
     });
   });
 

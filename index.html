@@ -39,7 +39,7 @@
     import { ambildaftarjadwal } from './main.js';
 
     $(document).ready(async function() {
-            let elemendaftar = $("#jadwal_pelajaran > tbody");
+            let elemenDaftar = $("#jadwal_pelajaran > tbody");
             let daftarjadwal = await ambildaftarjadwal();
             let nomor = 1;
             daftarjadwal.forEach((data) => {
