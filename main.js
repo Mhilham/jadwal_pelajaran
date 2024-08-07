@@ -27,7 +27,7 @@ const db = getFirestore(app);
 
 export async function ambildaftarjadwal() {
   const refDokumen = collection(db, "jadwal_pelajaran");
-  const kueri = query(refDokumen, orderBy("nama"));
+  const kueri = query(refDokumen, orderBy("id"));
   const cuplikankueri = await getDocs(kueri);
 
   let hasil = [];

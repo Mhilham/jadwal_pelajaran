@@ -32,21 +32,21 @@
       <th scope="col">Mata Pelajaran</th>
     </tr>
   </table>
-<tbody>
-</tbody>
+  <tbody>
+  </tbody>
 
   <script type="module">
     import { ambildaftarjadwal } from './main.js';
 
-  $(document).ready(async function() {
-        let elemendaftar = $("#jadwal_pelajaran > tbody");
-        let daftarjadwal = await ambildaftarjadwal();
-        let nomor = 1;
-        daftarjadwal.forEach((data) => {
-          elemenDaftar.append(
+    $(document).ready(async function() {
+            let elemendaftar = $("#jadwal_pelajaran > tbody");
+            let daftarjadwal = await ambildaftarjadwal();
+            let nomor = 1;
+            daftarjadwal.forEach((data) => {
+              elemenDaftar.append(
                 '<tr>' +
                 '<th>' + nomor + '</th>' +
-                '<td>' + data.kelas + '</td>'+
+                '<td>' + data.kelas + '</td>' +
                 '<td>' + data.jam + '</td>' +
                 '<td>' + data.waktu + '</td>' +
                 '<td>' + data.kelas + '</td>' +
@@ -57,9 +57,11 @@
               );
               nomor = nomor + 1;
             });
-            
-            </script>
+  
+  });
 
-
-            </body>
-              </html>
+    </script>
+    
+</body>
+ 
+</html>
