@@ -21,7 +21,8 @@
 
 
 <body>
-  <h1>JADWAL PELAJARAN SMK PLUS INSAN CEMERLANG</h1>
+  <h3>JADWAL PELAJARAN SMK 
+  PLUS INSAN CEMERLANG</h3>
 
   <table class="table" id="jadwal_pelajaran">
     <tr>
@@ -29,39 +30,58 @@
       <th scope="col">Jam</th>
       <th scope="col">waktu</th>
       <th scope="col">kelas</th>
-      <th scope="col">Mata Pelajaran</th>
+      <th scope="col">mapel</th>
     </tr>
   </table>
   <tbody>
   </tbody>
 
   <script type="module">
-    import { ambildaftarjadwal } from './main.js';
+    import { ambildaftarjadwal, hapusjadwal } from './main.js';
 
     $(document).ready(async function() {
-            let elemenDaftar = $("#jadwal_pelajaran > tbody");
-            let daftarjadwal = await ambildaftarjadwal();
-            let nomor = 1;
-            daftarjadwal.forEach((data) => {
-              elemenDaftar.append(
-                '<tr>' +
-                '<th>' + nomor + '</th>' +
-                '<td>' + data.kelas + '</td>' +
-                '<td>' + data.jam + '</td>' +
-                '<td>' + data.waktu + '</td>' +
-                '<td>' + data.kelas + '</td>' +
-                '<td>' + data.mapel + '</td>' +
-                '</tr>'
+      let elemenDaftar = $("#jadwal_pelajaran > tbody");
+      let daftarjadwal = await ambildaftarjadwal();
+      let nomor = 1;
+      daftarjadwal.forEach((data) => {
+        elemenDaftar.append(
+          '<tr>' +
+
+          '<td>' + data.hari + '</td>' +
+          '<td>' + data.jam + '</td>' +
+          '<td>' + data.waktu + '</td>' +
+          '<td>' + data.kelas + '</td>' +
+          '<td>' + data.mapel + '</td>' +
+          '<td>'   
+      + ' <button class="btn btn-warning ubah" data="' +
+          data.id +
+          '">Ubah</button>' +
+      ' <button class="btn btn-danger hapus" data="' +
+          data.id +
+          '">Hapus</button>' +
+          '</td>'+
+          '</tr>'
 
 
-              );
-              nomor = nomor + 1;
-            });
-  
-  });
+        );
+        nomor = nomor + 1;
+      });
+      $('.hapus').click(async function() {
+        await hapusjadwal($(this).attr('data'));
+        location.reload();
+      })
+    });
+  </script>
 
-    </script>
-    
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="tambah.html">tambah</a>
+    </li>
+
+  </ul>
 </body>
- 
+
 </html>

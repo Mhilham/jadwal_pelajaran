@@ -44,3 +44,25 @@ export async function ambildaftarjadwal() {
 
   return hasil;
 }
+
+
+export async function hapusjadwal(docId) {
+  await deleteDoc(doc(db, "jadwal", docId));
+};
+
+export async function tambahjadwal(hari, jam, waktu, kelas, mapel ) {
+  try {
+    const dokRef = await addDoc(collection(db, "jadwal"), {
+     hari: hari,
+     jam: jam,
+     waktu:waktu,
+     kelas: kelas,
+     mapel: mapel,
+    
+  
+    });
+    console.log('berhasil menambah data' + dok)
+  } catch (e) {
+    console.log('Gagal menambah data' + e);
+  }
+}
